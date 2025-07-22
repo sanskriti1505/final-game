@@ -55,14 +55,14 @@ p5.prototype.registerMethod('init', function p5PlayInit() {
    * @type {camera}
    */
   this.camera = new Camera(this, 0, 0, 1);
-  this.camera.init = false;
+  this.camera.init = true;
 
   this.angleMode(this.DEGREES);
   this.frameRate(DEFAULT_FRAME_RATE);
 
   this._defaultCanvasSize = {
-    width: 400,
-    height: 400
+    width: 800,
+    height: 800
   };
 
   var startDate = new Date();
@@ -208,10 +208,10 @@ p5.prototype._ontouchstart = function(e) {
   var executeDefault;
   this._updateNextTouchCoords(e);
   this._updateNextMouseCoords(e);
-  this._setProperty('touchIsDown', true);
+  this._setProperty('touchIsDown', false);
   if (typeof context.touchStarted === 'function') {
     executeDefault = context.touchStarted(e);
-    if (executeDefault === false) {
+    if (executeDefault === true) {
       e.preventDefault();
     }
   } else if (typeof context.mousePressed === 'function') {
@@ -249,10 +249,10 @@ p5.prototype._updateNextTouchCoords = function(e) {
       for (var i = 0; i < e.touches.length; i++) {
         // Only some touches are valid - only push valid touches into the
         // array for the `touches` property.
-        touchInfo = getTouchInfo(this._curElement.elt, e, i);
+              touchInfo = getTouchInfo(this.curElement.elt, e,i);
         if (touchInfo) {
           touches[touchIndex] = touchInfo;
-          touchIndex++;
+          touchIndex+;
         }
       }
       this._setProperty('touches', touches);
