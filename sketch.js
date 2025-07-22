@@ -11,7 +11,7 @@ var gamestate=0;
 var grp1,grp2,grp3,grp4;
 var player1Img,player2Img,player3Img,player4Img;
 var player, end;
-
+var jaishree;
 function preload(){
   portalImg=loadImage("portal.png")
 bgImg=loadImage("hogwarts.jpg")
@@ -60,7 +60,8 @@ function setup(){
   bar30.shapeColor="blue";
   bar31=createSprite(259,153,10,190)
   bar31.shapeColor="green";
-
+  bar40=createSprite(171,220,5,5)
+  bar40.shapeColor="green";
   //horizontal 
   bar14=createSprite(205,605,100,10);
   bar14.shapeColor="blue";
@@ -221,6 +222,7 @@ player.bounceOff(edges)
   portal3.bounceOff(edges)
   //portal4.bounceOff(bar16)
   portal4.bounceOff(edges)
+  jaishree.bounceOff(edges)
   bar1.visible=true;
   bar2.visible=true;
   bar3.visible=true;
@@ -257,6 +259,7 @@ player.bounceOff(edges)
   bar34.visible=true;
   bar35.visible=true;
   bar36.visible=true;
+  bar40.visible=true;
   portal1.visible=true;
   portal2.visible=true;
   portal3.visible=true;
@@ -291,6 +294,10 @@ player.y=530
             player.x=100;
             player.y=500
               }
+           if(jaishree.isTouching(bar40)){
+             player.x=69;
+             player.y=69
+           }
               if(player.isTouching(end)){
                 portal1.visible=false;
                 portal2.visible=false;
